@@ -5,6 +5,23 @@ __metadata:
   version: 4
   cacheKey: 5
 
+"@app/library@workspace:Library":
+  version: 0.0.0-use.local
+  resolution: "@app/library@workspace:Library"
+  dependencies:
+    "@types/express": ^4.17.7
+    "@types/node": ^14.6.0
+    "@types/react": ^16.9.46
+    "@types/react-dom": ^16.9.8
+    eventemitter3: ^4.0.4
+    express: ^4.17.1
+    typescript: ^3.9.7
+  peerDependencies:
+    react: "*"
+    react-dom: "*"
+  languageName: unknown
+  linkType: soft
+
 "@types/body-parser@npm:*":
   version: 1.19.0
   resolution: "@types/body-parser@npm:1.19.0"
@@ -61,6 +78,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/node@npm:^14.6.0":
+  version: 14.6.0
+  resolution: "@types/node@npm:14.6.0"
+  checksum: ff23553ab77516d0f90b6710a041a49723fc1b1ca33a5379d5746068cac8b9ddbec428d3a4913afaee50bcdc69b9583843740a18a3519ae997982694f5287c6b
+  languageName: node
+  linkType: hard
+
 "@types/prop-types@npm:*":
   version: 15.7.3
   resolution: "@types/prop-types@npm:15.7.3"
@@ -110,6 +134,12 @@ __metadata:
   checksum: 1d4e222e240ff6ed0aa41cd3997fefb53b4f2fbe8f16d20055174662dda1361c7409dfb40ad8e2f355316f80edcd701e0f3ff6298abe35e0b88d9b62903acd18
   languageName: node
   linkType: hard
+
+"App@workspace:App":
+  version: 0.0.0-use.local
+  resolution: "App@workspace:App"
+  languageName: unknown
+  linkType: soft
 
 "accepts@npm:~1.3.7":
   version: 1.3.7
@@ -238,6 +268,13 @@ __metadata:
   version: 1.8.1
   resolution: "etag@npm:1.8.1"
   checksum: f18341a3c12a554ec46c0d4756bc9cae177e92f25a4ebd9ceefebf0ee448b675972fc110879f22b1bf514174713921ae5de9ff77af2062d422b1085588465a57
+  languageName: node
+  linkType: hard
+
+"eventemitter3@npm:^4.0.4":
+  version: 4.0.4
+  resolution: "eventemitter3@npm:4.0.4"
+  checksum: 6693972304a7bf91aea3727d83803e1b38819ee0ed628ed842ac909284dedd1f3a7aa0ab4ccdd332bfcb9720138c9021b7b4737259e9fe8d70f7f25c57b9f0ad
   languageName: node
   linkType: hard
 

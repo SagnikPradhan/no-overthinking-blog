@@ -21,11 +21,21 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       {
         "name": "no-overthink-blog",
         "reference": "workspace:."
+      },
+      {
+        "name": "App",
+        "reference": "workspace:App"
+      },
+      {
+        "name": "@app/library",
+        "reference": "workspace:Library"
       }
     ],
     "enableTopLevelFallback": true,
     "ignorePatternData": "(^(?:\\.yarn\\/sdks(?:\\/(?!\\.)(?:(?:(?!(?:^|\\/)\\.).)*?)|$))$)",
     "fallbackExclusionList": [
+      ["@app/library", ["workspace:Library"]],
+      ["App", ["workspace:App"]],
       ["no-overthink-blog", ["workspace:."]]
     ],
     "fallbackPool": [
@@ -76,6 +86,22 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["express", "npm:4.17.1"],
             ["react", "npm:16.13.1"],
             ["react-dom", "virtual:3e0e962b7ba585dcc3c7e78b9e3b3462f166a012c05880c57ca5b2d107dfcde9cf6bf52429b179477568d8f3fa0f18b303cf03dd6fd5169bc9fd9a8d0560f544#npm:16.13.1"],
+            ["typescript", "patch:typescript@npm%3A3.9.7#builtin<compat/typescript>::version=3.9.7&hash=5b02a2"]
+          ],
+          "linkType": "SOFT",
+        }]
+      ]],
+      ["@app/library", [
+        ["workspace:Library", {
+          "packageLocation": "./Library/",
+          "packageDependencies": [
+            ["@app/library", "workspace:Library"],
+            ["@types/express", "npm:4.17.7"],
+            ["@types/node", "npm:14.6.0"],
+            ["@types/react", "npm:16.9.46"],
+            ["@types/react-dom", "npm:16.9.8"],
+            ["eventemitter3", "npm:4.0.4"],
+            ["express", "npm:4.17.1"],
             ["typescript", "patch:typescript@npm%3A3.9.7#builtin<compat/typescript>::version=3.9.7&hash=5b02a2"]
           ],
           "linkType": "SOFT",
@@ -143,6 +169,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/node", "npm:14.0.27"]
           ],
           "linkType": "HARD",
+        }],
+        ["npm:14.6.0", {
+          "packageLocation": "./.yarn/cache/@types-node-npm-14.6.0-3b4a148c02-ff23553ab7.zip/node_modules/@types/node/",
+          "packageDependencies": [
+            ["@types/node", "npm:14.6.0"]
+          ],
+          "linkType": "HARD",
         }]
       ]],
       ["@types/prop-types", [
@@ -202,6 +235,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/mime", "npm:2.0.3"]
           ],
           "linkType": "HARD",
+        }]
+      ]],
+      ["App", [
+        ["workspace:App", {
+          "packageLocation": "./App/",
+          "packageDependencies": [
+            ["App", "workspace:App"]
+          ],
+          "linkType": "SOFT",
         }]
       ]],
       ["accepts", [
@@ -362,6 +404,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/etag-npm-1.8.1-54a3b989d9-f18341a3c1.zip/node_modules/etag/",
           "packageDependencies": [
             ["etag", "npm:1.8.1"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["eventemitter3", [
+        ["npm:4.0.4", {
+          "packageLocation": "./.yarn/cache/eventemitter3-npm-4.0.4-46f999a6ee-6693972304.zip/node_modules/eventemitter3/",
+          "packageDependencies": [
+            ["eventemitter3", "npm:4.0.4"]
           ],
           "linkType": "HARD",
         }]
