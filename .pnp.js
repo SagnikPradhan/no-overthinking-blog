@@ -23,7 +23,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "reference": "workspace:."
       },
       {
-        "name": "App",
+        "name": "app",
         "reference": "workspace:App"
       },
       {
@@ -34,8 +34,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
     "enableTopLevelFallback": true,
     "ignorePatternData": "(^(?:\\.yarn\\/sdks(?:\\/(?!\\.)(?:(?:(?!(?:^|\\/)\\.).)*?)|$))$)",
     "fallbackExclusionList": [
-      ["@app/library", ["workspace:Library"]],
-      ["App", ["workspace:App"]],
+      ["@app/library", ["virtual:54f1c215967c8a4b6458879697e7a9a197b46bfe775ac5b15bd077ddda501cd03bfe92fdee7254b61e07e3f98554e3ca5c7c847f3b998f82a47bca28bdc1f1d2#workspace:Library", "workspace:Library"]],
+      ["app", ["workspace:App"]],
       ["no-overthink-blog", ["workspace:."]]
     ],
     "fallbackPool": [
@@ -82,6 +82,27 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@app/library", [
+        ["virtual:54f1c215967c8a4b6458879697e7a9a197b46bfe775ac5b15bd077ddda501cd03bfe92fdee7254b61e07e3f98554e3ca5c7c847f3b998f82a47bca28bdc1f1d2#workspace:Library", {
+          "packageLocation": "./.yarn/$$virtual/@app-library-virtual-225dc15b9b/1/Library/",
+          "packageDependencies": [
+            ["@app/library", "virtual:54f1c215967c8a4b6458879697e7a9a197b46bfe775ac5b15bd077ddda501cd03bfe92fdee7254b61e07e3f98554e3ca5c7c847f3b998f82a47bca28bdc1f1d2#workspace:Library"],
+            ["@types/express", "npm:4.17.7"],
+            ["@types/node", "npm:14.6.0"],
+            ["@types/react", "npm:16.9.46"],
+            ["@types/react-dom", "npm:16.9.8"],
+            ["eventemitter3", "npm:4.0.4"],
+            ["express", "npm:4.17.1"],
+            ["react", "npm:16.13.1"],
+            ["react-dom", "virtual:3e0e962b7ba585dcc3c7e78b9e3b3462f166a012c05880c57ca5b2d107dfcde9cf6bf52429b179477568d8f3fa0f18b303cf03dd6fd5169bc9fd9a8d0560f544#npm:16.13.1"],
+            ["regexparam", "npm:1.3.0"],
+            ["typescript", "patch:typescript@npm%3A3.9.7#builtin<compat/typescript>::version=3.9.7&hash=5b02a2"]
+          ],
+          "packagePeers": [
+            "react",
+            "react-dom"
+          ],
+          "linkType": "SOFT",
+        }],
         ["workspace:Library", {
           "packageLocation": "./Library/",
           "packageDependencies": [
@@ -228,15 +249,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
-      ["App", [
-        ["workspace:App", {
-          "packageLocation": "./App/",
-          "packageDependencies": [
-            ["App", "workspace:App"]
-          ],
-          "linkType": "SOFT",
-        }]
-      ]],
       ["accepts", [
         ["npm:1.3.7", {
           "packageLocation": "./.yarn/cache/accepts-npm-1.3.7-0dc9de65aa-2686fa30db.zip/node_modules/accepts/",
@@ -246,6 +258,21 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["negotiator", "npm:0.6.2"]
           ],
           "linkType": "HARD",
+        }]
+      ]],
+      ["app", [
+        ["workspace:App", {
+          "packageLocation": "./App/",
+          "packageDependencies": [
+            ["app", "workspace:App"],
+            ["@app/library", "virtual:54f1c215967c8a4b6458879697e7a9a197b46bfe775ac5b15bd077ddda501cd03bfe92fdee7254b61e07e3f98554e3ca5c7c847f3b998f82a47bca28bdc1f1d2#workspace:Library"],
+            ["@types/react", "npm:16.9.46"],
+            ["@types/react-dom", "npm:16.9.8"],
+            ["react", "npm:16.13.1"],
+            ["react-dom", "virtual:3e0e962b7ba585dcc3c7e78b9e3b3462f166a012c05880c57ca5b2d107dfcde9cf6bf52429b179477568d8f3fa0f18b303cf03dd6fd5169bc9fd9a8d0560f544#npm:16.13.1"],
+            ["typescript", "patch:typescript@npm%3A3.9.7#builtin<compat/typescript>::version=3.9.7&hash=5b02a2"]
+          ],
+          "linkType": "SOFT",
         }]
       ]],
       ["array-flatten", [
