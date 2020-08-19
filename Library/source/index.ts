@@ -1,30 +1,65 @@
-import express, { } from 'express'
+import http from 'http'
+
 import EventEmitter from 'eventemitter3'
-
-import fs from 'fs/promises'
-import path from 'path'
-
-export class OverthinkServer {
-  #server = express()
-
-  public readonly events = new EventEmitter()
-
-  public async init(port: number) {
+import regexparam from 'regexparam'
 
 
-    this.#server.listen(port)
+export interface AppProps {
+  port: number
+}
+
+export interface Response {
+  headers: Record<string, string>
+  body: unknown
+  statusCode: number
+}
+
+export interface Request {
+  headers: Record<string, string>
+  body: unknown
+  method: string
+}
+
+export function AppComponent({ port }: AppProps) {
+  const events = new EventEmitter()
+  const server = startServer().listen(port)
+}
+
+function startServer() {
+  const server = http.createServer(() => {
+
+  })
+
+  return server;
+}
+
+type Service = (req: Request, res: Response) => Promise<Response>
+
+export interface ServerComponentProps {
+  path?: string
+  service: Service
+  nodes?: ServerComponent[]
+}
+
+export class ServerComponent {
+  #service: Service
+  #path?: { keys: string[], pattern: RegExp }
+
+  public readonly nodes: ServerComponent[] = []
+
+  constructor({ service, path, nodes }: ServerComponentProps) {
+    this.#service = service
+    if (path) this.#path = regexparam(path)
+    this.nodes = nodes || []
   }
 
-  private async getComponents(componentsDir: string) {
-    const absolutePath = path.resolve(componentsDir)
-    const componentsDirItems = await fs.readdir(absolutePath)
-    const componentsPath: string[] = []
+  public async runService(req: Request, res: Response): Promise<Response> {
+    const currentServiceResponse = await this.#service(req, res)
+    let response = currentServiceResponse
 
-    for (const itemName of componentsDirItems) {
-      const itemPath = path.join(absolutePath, itemName)
-      const itemStat = await fs.stat(itemPath)
+    for (const node of this.nodes)
+      response = await node.runService(req, response)
 
-      if (itemStat.isDirectory()) componentsPath.push(path.resolve(itemPath, 'index.js'))
-    }
+    return response
   }
 }

@@ -15,6 +15,7 @@ __metadata:
     "@types/react-dom": ^16.9.8
     eventemitter3: ^4.0.4
     express: ^4.17.1
+    regexparam: ^1.3.0
     typescript: ^3.9.7
   peerDependencies:
     react: "*"
@@ -490,11 +491,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "no-overthink-blog@workspace:."
   dependencies:
-    "@types/express": ^4.17.7
     "@types/node": ^14.0.27
     "@types/react": ^16.9.46
     "@types/react-dom": ^16.9.8
-    express: ^4.17.1
     react: ^16.13.1
     react-dom: ^16.13.1
     typescript: ^3.9.7
@@ -607,6 +606,13 @@ __metadata:
     object-assign: ^4.1.1
     prop-types: ^15.6.2
   checksum: 13dcc9ba8a7521ecc3d7e69998dbc5703ae9515308d06a94a474ad34b42f1fc109372265e924a8c9b11d20fa1828407c290b8f61617c36734c4ca907ae7e5f45
+  languageName: node
+  linkType: hard
+
+"regexparam@npm:^1.3.0":
+  version: 1.3.0
+  resolution: "regexparam@npm:1.3.0"
+  checksum: 3be8055bc697d720647e2b2a781e8a784013e80d51724dce833524c8f1a9fbfa7efd3dac90572ce64191b82e908c8e70c6ff40b8da3ff0b3fb4199af73d4a8b5
   languageName: node
   linkType: hard
 
