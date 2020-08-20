@@ -11,4 +11,4 @@ export interface Response {
   statusCode: number
 }
 
-export type Service = (request: Request, response: Response) => Promise<[Request, Response]>
+export type Service = (props: [Request, Response]) => Promise<[Request, Response]>

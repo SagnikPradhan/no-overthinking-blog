@@ -1,9 +1,8 @@
-import { ServerComponent } from '@app/library'
+import { ServerComponent, Service } from '@app/library'
 
-export default new ServerComponent({
-  path: ["/"],
-  service: async (_, response) => {
-    response.body = "Hello World"
-    return [_, response]
-  }
-})
+const service: Service = async ([request, response]) => {
+  response.body = "Hello World"
+  return [request, response]
+}
+
+export const serverComponent = ServerComponent(service, { path: '/' })

@@ -1,43 +1,47 @@
 import regexparam from 'regexparam'
 import { Service, Request, Response } from './service'
 
-export interface ServerComponentProps {
-  path?: string[]
-  service: Service
-  children?: ServerComponent[]
-}
+export const emptyArray = <T extends unknown[]>(arr: T | undefined): arr is T => !Array.isArray(arr) || arr.length === 0
 
-const nonEmptyArray = <T extends unknown[]>(arr: T | undefined): arr is T => Boolean(arr && arr.length > 0)
+type RequestTreeNode = ({ url, req, res }: { url: string, req: Request, res: Response }) => Promise<[Request, Response]>
 
-export class ServerComponent {
-  #path?: { keys: string[], pattern: RegExp }[]
-  #service: Service
-  #children: ServerComponent[]
+/**
+ * Server Component
+ * @param service - Service to be run
+ * @param props - Properties
+ */
+export function ServerComponent<N extends RequestTreeNode[]>(service: Service, props?: {
+  path?: string
+  nodes?: N
+}): RequestTreeNode {
+  const path = props?.path ? regexparam(props.path) : null
+  const nodes = props?.nodes || []
 
-  constructor({ path, service, children }: ServerComponentProps) {
-    if (nonEmptyArray(path)) this.#path = path.map((p) => regexparam(p))
+  return async ({ url, req, res }: {
+    url: string,
+    req: Request,
+    res: Response
+  }) => {
+    // If path specific
+    // Check if it runs on current path
+    if (path?.pattern.test(url)) {
 
-    this.#service = service
-    this.#children = children || []
-  }
-
-  async execute({ url, request, response }: { url: string, request: Request, response: Response }): Promise<[Request, Response]> {
-    if (nonEmptyArray(this.#path)) {
-      const path = this.#path.find(({ pattern }) => pattern.test(url))
-      if (!path) return [request, response];
-
-      // If queries is not already populated
-      if (nonEmptyArray(Object.keys(request.query))) {
-        const queryValues = (path.pattern.exec(url) || []).slice(1)
+      // If queries are missing add them
+      if (emptyArray(Object.keys(req.query))) {
+        const queryValues = path.pattern.exec(url)?.slice(1) || []
         const query = Object.fromEntries(queryValues.map((v, i) => [path.keys[i], v]))
-        Object.assign(request.query, query)
+        req.query = query
       }
-    }
 
-    let [servicesParsedRequest, servicesParsedResponse] = await this.#service(request, response)
-    for (const child of this.#children)
-      [servicesParsedRequest, servicesParsedResponse] = await child.execute({ url, request: servicesParsedRequest, response: servicesParsedResponse })
+    } else return [req, res];
 
-    return [servicesParsedRequest, servicesParsedResponse]
+    // Run the current service
+    let [request, response] = await service([req, res])
+
+    // Run the nodes
+    for (const node of nodes)
+      [request, response] = await node({ url, req: request, res: response })
+
+    return [req, res]
   }
 }
