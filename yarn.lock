@@ -41,6 +41,58 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@editorjs/code@npm:^2.5.0":
+  version: 2.5.0
+  resolution: "@editorjs/code@npm:2.5.0"
+  checksum: 8a0603cba1773d5527b477a6a0e16a72b633d142652ff47cde6c86e89c811af40d8285d0f2db5b93cfcf674fa3a3ace67596482b535ae05f42aeb7e09fe2c15b
+  languageName: node
+  linkType: hard
+
+"@editorjs/editorjs@npm:^2.18.0":
+  version: 2.18.0
+  resolution: "@editorjs/editorjs@npm:2.18.0"
+  dependencies:
+    codex-notifier: ^1.1.2
+    codex-tooltip: ^1.0.1
+  checksum: 415824c1584ac9babfaebc50f9b33b037d44d1397009bd52b268b194d06e0ae6a81b50ae846b675887d9dad3f4fedce35ec7f1f00181dc943a95a52988f8989d
+  languageName: node
+  linkType: hard
+
+"@editorjs/header@npm:^2.5.0":
+  version: 2.5.0
+  resolution: "@editorjs/header@npm:2.5.0"
+  checksum: 35148e596caf782a0bff790eab249ea92f4fd5e3a06ece2c636be64b42cd50a06968b2026dc8a8137724cf822b1f670a75584c65d9d387bf22df9c2a06ac431d
+  languageName: node
+  linkType: hard
+
+"@editorjs/image@npm:^2.5.0":
+  version: 2.5.0
+  resolution: "@editorjs/image@npm:2.5.0"
+  checksum: 0be6bfb513c5092ae6b8d0edca5e054bc4551287735b57dd839bc809400f5c859112363489e25056c2d92da2175370db036b8b770542675deae50e9579592cdc
+  languageName: node
+  linkType: hard
+
+"@editorjs/inline-code@npm:^1.3.1":
+  version: 1.3.1
+  resolution: "@editorjs/inline-code@npm:1.3.1"
+  checksum: 7eede42016d5ab62505ad134236a3315d565635845fc7a2eded321c30a9fe061ee328dab74c28e3a1bf5b3ecd1e448f5f9b390428de6497c85aa3d419f9a994f
+  languageName: node
+  linkType: hard
+
+"@editorjs/list@npm:^1.5.0":
+  version: 1.5.0
+  resolution: "@editorjs/list@npm:1.5.0"
+  checksum: 6fb39276658c161807faf22a5ae279664ddc907a897c0aff490300ff87b5b9b334782baadb2f6bfa162f259527655f9ba737a7420e94c80e12e210be6083f7a5
+  languageName: node
+  linkType: hard
+
+"@editorjs/paragraph@npm:^2.7.0":
+  version: 2.7.0
+  resolution: "@editorjs/paragraph@npm:2.7.0"
+  checksum: bc5a7a75850fb7327852b6bcec0301e752a94832212fc01d4b9d1abc9f9f4b310b88b55c2e227da08645869eb5b26b18b2de28494272f0f65be747c15ec6380c
+  languageName: node
+  linkType: hard
+
 "@rollup/plugin-commonjs@npm:^15.0.0":
   version: 15.0.0
   resolution: "@rollup/plugin-commonjs@npm:15.0.0"
@@ -143,15 +195,6 @@ __metadata:
   version: 4.7.7
   resolution: "@types/history@npm:4.7.7"
   checksum: df732a473c87a0cf5e5bd7c22ab39e709c8fe9d161dd0a6c2c4c37f200fbbf671a49851d2d5f7f7b9b1a3de748ad14d73f8538f0ff6c374427359586d7302b24
-  languageName: node
-  linkType: hard
-
-"@types/markdown-to-jsx@npm:^6.11.1":
-  version: 6.11.1
-  resolution: "@types/markdown-to-jsx@npm:6.11.1"
-  dependencies:
-    "@types/react": "*"
-  checksum: e64338ea533730f506138d1ddea8ba3babaff1d03b3fd90f363b0179ae2ef2487be56acd618c15a9ed93f0c2db8f216e56f44c751c5ba0c3cfbb2479657dc2c2
   languageName: node
   linkType: hard
 
@@ -435,6 +478,20 @@ __metadata:
   version: 1.1.0
   resolution: "code-point-at@npm:1.1.0"
   checksum: 7d9837296e0f1c00239c88542f5a3e0bad11e45d3d0e8d9d097901fe54722dd5d2c006969077a287be8648a202c43f74e096f17552cbd897568308fba7b87ac0
+  languageName: node
+  linkType: hard
+
+"codex-notifier@npm:^1.1.2":
+  version: 1.1.2
+  resolution: "codex-notifier@npm:1.1.2"
+  checksum: 8c75f9d6a02c6895bd7b6fc2c8f694c9c5ab91ce377b7a618b170289cebe237a06b99ee90c3587fef25617deff57723c3068138fc3ba2e796a1b90b1cfa16a46
+  languageName: node
+  linkType: hard
+
+"codex-tooltip@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "codex-tooltip@npm:1.0.1"
+  checksum: 5c55701c8dfb343b195c1ffd0abfbea394ecc57eb043b1754dde0cd1b478c5d58592331369d197e0ef0d9aa9427695c40d14f19b8b0fe374e6d06e792cce107c
   languageName: node
   linkType: hard
 
@@ -820,13 +877,6 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
-"inherits@npm:2.0.3":
-  version: 2.0.3
-  resolution: "inherits@npm:2.0.3"
-  checksum: 9488f9433effbc24474f6baee8014e5337c7f99305ecb4204fa5864ae7655c24225780d87fc65ed8d3d374715a18c5dc8c69fe3bf9745cde2e7acd0ac068a07b
-  languageName: node
-  linkType: hard
-
 "is-binary-path@npm:~2.1.0":
   version: 2.1.0
   resolution: "is-binary-path@npm:2.1.0"
@@ -1118,32 +1168,11 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
-"nob@workspace:.":
+"no-name-blog@workspace:.":
   version: 0.0.0-use.local
-  resolution: "nob@workspace:."
+  resolution: "no-name-blog@workspace:."
   dependencies:
-    "@rollup/plugin-commonjs": ^15.0.0
-    "@rollup/plugin-node-resolve": ^9.0.0
-    "@rollup/plugin-replace": ^2.3.3
-    "@rollup/plugin-sucrase": ^3.1.0
-    "@rollup/plugin-typescript": ^5.0.2
-    "@types/markdown-to-jsx": ^6.11.1
-    "@types/react": ^16.9.46
-    "@types/react-dom": ^16.9.8
-    "@types/react-router-dom": ^5.1.5
-    colorette: ^1.2.1
-    path: ^0.12.7
-    react: ^16.13.1
-    react-dom: ^16.13.1
-    react-router-dom: ^5.2.0
-    rollup: ^2.26.5
-    rollup-plugin-livereload: ^1.3.0
-    rollup-plugin-serve: ^1.0.3
-    rollup-plugin-terser: ^7.0.0
-    snarkdown: ^1.2.2
-    tslib: ^2.0.1
     typescript: ^4.0.2
-    yargs-parser: ^19.0.1
   languageName: unknown
   linkType: soft
 
@@ -1298,16 +1327,6 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
-"path@npm:^0.12.7":
-  version: 0.12.7
-  resolution: "path@npm:0.12.7"
-  dependencies:
-    process: ^0.11.1
-    util: ^0.10.3
-  checksum: 0e2d3342ca6f91aba8e514919cae8a08ad12071297a3a99da6e3ea493f5296d9bb323ca9bece4d035fc280e91b701a740ce1e48ff65802004deaaae2f2cd623e
-  languageName: node
-  linkType: hard
-
 "performance-now@npm:^2.1.0":
   version: 2.1.0
   resolution: "performance-now@npm:2.1.0"
@@ -1335,13 +1354,6 @@ fsevents@~2.1.2:
   version: 2.0.1
   resolution: "process-nextick-args@npm:2.0.1"
   checksum: ddeb0f07d0d5efa649c2c5e39d1afd0e3668df2b392d036c8a508b0034f7beffbc474b3c2f7fd3fed2dc4113cef8f1f7e00d05690df3c611b36f6c7efd7852d1
-  languageName: node
-  linkType: hard
-
-"process@npm:^0.11.1":
-  version: 0.11.10
-  resolution: "process@npm:0.11.10"
-  checksum: ed93a85e9185b40fb01788c588a87c1a9da0eb925ef7cebebbe1b8bbf0eba1802130366603a29e3b689c116969d4fe018de6aed3474bbeb5aefb3716b85d6449
   languageName: node
   linkType: hard
 
@@ -1597,17 +1609,17 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
-"safe-buffer@npm:^5.0.1, safe-buffer@npm:^5.1.2, safe-buffer@npm:~5.1.0, safe-buffer@npm:~5.1.1":
-  version: 5.1.2
-  resolution: "safe-buffer@npm:5.1.2"
-  checksum: 2708587c1b5e70a5e420714ceb59f30f5791c6e831d39812125a008eca63a4ac18578abd020a0776ea497ff03b4543f2b2a223a7b9073bf2d6c7af9ec6829218
-  languageName: node
-  linkType: hard
-
-"safe-buffer@npm:^5.1.0":
+"safe-buffer@npm:^5.0.1, safe-buffer@npm:^5.1.0, safe-buffer@npm:^5.1.2":
   version: 5.2.1
   resolution: "safe-buffer@npm:5.2.1"
   checksum: 0bb57f0d8f9d1fa4fe35ad8a2db1f83a027d48f2822d59ede88fd5cd4ddad83c0b497213feb7a70fbf90597a70c5217f735b0eb1850df40ce9b4ae81dd22b3f9
+  languageName: node
+  linkType: hard
+
+"safe-buffer@npm:~5.1.0, safe-buffer@npm:~5.1.1":
+  version: 5.1.2
+  resolution: "safe-buffer@npm:5.1.2"
+  checksum: 2708587c1b5e70a5e420714ceb59f30f5791c6e831d39812125a008eca63a4ac18578abd020a0776ea497ff03b4543f2b2a223a7b9073bf2d6c7af9ec6829218
   languageName: node
   linkType: hard
 
@@ -1646,6 +1658,14 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
+"server@workspace:packages/server":
+  version: 0.0.0-use.local
+  resolution: "server@workspace:packages/server"
+  dependencies:
+    typescript: ^4.0.2
+  languageName: unknown
+  linkType: soft
+
 "set-blocking@npm:~2.0.0":
   version: 2.0.0
   resolution: "set-blocking@npm:2.0.0"
@@ -1657,13 +1677,6 @@ fsevents@~2.1.2:
   version: 3.0.3
   resolution: "signal-exit@npm:3.0.3"
   checksum: f8f3fec95c8d1f9ad7e3cce07e1195f84e7a85cdcb4e825e8a2b76aa5406a039083d2bc9662b3cf40e6948262f41277047d20e6fbd58c77edced0b18fab647d8
-  languageName: node
-  linkType: hard
-
-"snarkdown@npm:^1.2.2":
-  version: 1.2.2
-  resolution: "snarkdown@npm:1.2.2"
-  checksum: ff44cf5bf842f4cc4f8d5a8b14256b214a49c5d52cdca401e057fed121117bd7a9b92c6119fb03ea0da64a73bac7c9b5a9b261ca756cd77edc34677b6d0cdc38
   languageName: node
   linkType: hard
 
@@ -1920,15 +1933,6 @@ typescript@^4.0.2:
   languageName: node
   linkType: hard
 
-"util@npm:^0.10.3":
-  version: 0.10.4
-  resolution: "util@npm:0.10.4"
-  dependencies:
-    inherits: 2.0.3
-  checksum: 6682ea8239076243495c45e81f19c2c002e02805de4de08554dc815500805923f27f504ec1a9c7599d420b62bf7452efbab6fa078219d529188b0ca830f142a5
-  languageName: node
-  linkType: hard
-
 "uuid@npm:^3.3.2":
   version: 3.4.0
   resolution: "uuid@npm:3.4.0"
@@ -1955,6 +1959,39 @@ typescript@^4.0.2:
   checksum: 38ea80312cb42e5e8b4ac562d108d675b2354a79f8f125d363671f692657461b9181fd26f4fc9acdca433f8afee099cb78058806e1303e6b15b8fb022affba94
   languageName: node
   linkType: hard
+
+"web@workspace:packages/web":
+  version: 0.0.0-use.local
+  resolution: "web@workspace:packages/web"
+  dependencies:
+    "@editorjs/code": ^2.5.0
+    "@editorjs/editorjs": ^2.18.0
+    "@editorjs/header": ^2.5.0
+    "@editorjs/image": ^2.5.0
+    "@editorjs/inline-code": ^1.3.1
+    "@editorjs/list": ^1.5.0
+    "@editorjs/paragraph": ^2.7.0
+    "@rollup/plugin-commonjs": ^15.0.0
+    "@rollup/plugin-node-resolve": ^9.0.0
+    "@rollup/plugin-replace": ^2.3.3
+    "@rollup/plugin-sucrase": ^3.1.0
+    "@rollup/plugin-typescript": ^5.0.2
+    "@types/react": ^16.9.46
+    "@types/react-dom": ^16.9.8
+    "@types/react-router-dom": ^5.1.5
+    colorette: ^1.2.1
+    react: ^16.13.1
+    react-dom: ^16.13.1
+    react-router-dom: ^5.2.0
+    rollup: ^2.26.5
+    rollup-plugin-livereload: ^1.3.0
+    rollup-plugin-serve: ^1.0.3
+    rollup-plugin-terser: ^7.0.0
+    tslib: ^2.0.1
+    typescript: ^4.0.2
+    yargs-parser: ^19.0.1
+  languageName: unknown
+  linkType: soft
 
 "which@npm:^2.0.2":
   version: 2.0.2
