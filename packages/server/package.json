@@ -2,7 +2,6 @@
   "name": "server",
   "version": "0.0.1",
   "devDependencies": {
-    "@types/convict": "^5.2.1",
     "@types/koa": "^2.11.4",
     "@types/koa-bodyparser": "^4.3.0",
     "@types/koa-session": "^5.10.2",
@@ -14,7 +13,7 @@
   },
   "dependencies": {
     "@koa/router": "^9.4.0",
-    "convict": "^6.0.0",
+    "joi": "^17.2.1",
     "koa": "^2.13.0",
     "koa-bodyparser": "^4.3.0",
     "koa-session": "^6.0.0",

@@ -162,6 +162,53 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["@hapi/address", [
+        ["npm:4.1.0", {
+          "packageLocation": "./.yarn/cache/@hapi-address-npm-4.1.0-421a026867-2844aceeb9.zip/node_modules/@hapi/address/",
+          "packageDependencies": [
+            ["@hapi/address", "npm:4.1.0"],
+            ["@hapi/hoek", "npm:9.0.4"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["@hapi/formula", [
+        ["npm:2.0.0", {
+          "packageLocation": "./.yarn/cache/@hapi-formula-npm-2.0.0-67b6c90bc9-02d1425714.zip/node_modules/@hapi/formula/",
+          "packageDependencies": [
+            ["@hapi/formula", "npm:2.0.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["@hapi/hoek", [
+        ["npm:9.0.4", {
+          "packageLocation": "./.yarn/cache/@hapi-hoek-npm-9.0.4-aa65f1790b-d000f60d5e.zip/node_modules/@hapi/hoek/",
+          "packageDependencies": [
+            ["@hapi/hoek", "npm:9.0.4"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["@hapi/pinpoint", [
+        ["npm:2.0.0", {
+          "packageLocation": "./.yarn/cache/@hapi-pinpoint-npm-2.0.0-d5b89ff0f0-445ca01899.zip/node_modules/@hapi/pinpoint/",
+          "packageDependencies": [
+            ["@hapi/pinpoint", "npm:2.0.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["@hapi/topo", [
+        ["npm:5.0.0", {
+          "packageLocation": "./.yarn/cache/@hapi-topo-npm-5.0.0-2bfaee40f2-f92797d5ef.zip/node_modules/@hapi/topo/",
+          "packageDependencies": [
+            ["@hapi/topo", "npm:5.0.0"],
+            ["@hapi/hoek", "npm:9.0.4"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["@koa/router", [
         ["npm:9.4.0", {
           "packageLocation": "./.yarn/cache/@koa-router-npm-9.4.0-e7c50d7392-225a891b9e.zip/node_modules/@koa/router/",
@@ -326,16 +373,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@types-content-disposition-npm-0.5.3-90ee2edb84-1b7d94b19a.zip/node_modules/@types/content-disposition/",
           "packageDependencies": [
             ["@types/content-disposition", "npm:0.5.3"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
-      ["@types/convict", [
-        ["npm:5.2.1", {
-          "packageLocation": "./.yarn/cache/@types-convict-npm-5.2.1-577a9b83af-d635d93753.zip/node_modules/@types/convict/",
-          "packageDependencies": [
-            ["@types/convict", "npm:5.2.1"],
-            ["@types/node", "npm:14.6.0"]
           ],
           "linkType": "HARD",
         }]
@@ -914,15 +951,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
-      ["camelcase", [
-        ["npm:5.3.1", {
-          "packageLocation": "./.yarn/cache/camelcase-npm-5.3.1-5db8af62c5-6a3350c4ea.zip/node_modules/camelcase/",
-          "packageDependencies": [
-            ["camelcase", "npm:5.3.1"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
       ["caseless", [
         ["npm:0.12.0", {
           "packageLocation": "./.yarn/cache/caseless-npm-0.12.0-e83bc5df83-147f48bff9.zip/node_modules/caseless/",
@@ -1119,17 +1147,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
-      ["convict", [
-        ["npm:6.0.0", {
-          "packageLocation": "./.yarn/cache/convict-npm-6.0.0-88e8bdbf48-6fc69e1058.zip/node_modules/convict/",
-          "packageDependencies": [
-            ["convict", "npm:6.0.0"],
-            ["lodash.clonedeep", "npm:4.5.0"],
-            ["yargs-parser", "npm:18.1.3"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
       ["cookies", [
         ["npm:0.8.0", {
           "packageLocation": "./.yarn/cache/cookies-npm-0.8.0-d7388cbd94-c401e0f791.zip/node_modules/cookies/",
@@ -1222,15 +1239,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],
           "packagePeers": [
             "supports-color"
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
-      ["decamelize", [
-        ["npm:1.2.0", {
-          "packageLocation": "./.yarn/cache/decamelize-npm-1.2.0-c5a2fdc622-8ca9d03ea8.zip/node_modules/decamelize/",
-          "packageDependencies": [
-            ["decamelize", "npm:1.2.0"]
           ],
           "linkType": "HARD",
         }]
@@ -1872,6 +1880,20 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["joi", [
+        ["npm:17.2.1", {
+          "packageLocation": "./.yarn/cache/joi-npm-17.2.1-8ab1bb1e58-197c862389.zip/node_modules/joi/",
+          "packageDependencies": [
+            ["joi", "npm:17.2.1"],
+            ["@hapi/address", "npm:4.1.0"],
+            ["@hapi/formula", "npm:2.0.0"],
+            ["@hapi/hoek", "npm:9.0.4"],
+            ["@hapi/pinpoint", "npm:2.0.0"],
+            ["@hapi/topo", "npm:5.0.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["js-tokens", [
         ["npm:4.0.0", {
           "packageLocation": "./.yarn/cache/js-tokens-npm-4.0.0-0ac852e9e2-1fc4e4667a.zip/node_modules/js-tokens/",
@@ -2060,15 +2082,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/livereload-js-npm-3.3.1-e19212c0e5-2cf4ab6f51.zip/node_modules/livereload-js/",
           "packageDependencies": [
             ["livereload-js", "npm:3.3.1"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
-      ["lodash.clonedeep", [
-        ["npm:4.5.0", {
-          "packageLocation": "./.yarn/cache/lodash.clonedeep-npm-4.5.0-fbc3cda4e5-41e2fe4c57.zip/node_modules/lodash.clonedeep/",
-          "packageDependencies": [
-            ["lodash.clonedeep", "npm:4.5.0"]
           ],
           "linkType": "HARD",
         }]
@@ -2984,7 +2997,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["server", "workspace:packages/server"],
             ["@koa/router", "npm:9.4.0"],
-            ["@types/convict", "npm:5.2.1"],
             ["@types/koa", "npm:2.11.4"],
             ["@types/koa-bodyparser", "npm:4.3.0"],
             ["@types/koa-session", "npm:5.10.2"],
@@ -2992,7 +3004,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/mongoose", "npm:5.7.36"],
             ["@types/node", "npm:14.6.0"],
             ["@types/node-fetch", "npm:2.5.7"],
-            ["convict", "npm:6.0.0"],
+            ["joi", "npm:17.2.1"],
             ["koa", "npm:2.13.0"],
             ["koa-bodyparser", "npm:4.3.0"],
             ["koa-session", "npm:6.0.0"],
@@ -3514,15 +3526,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["yargs-parser", [
-        ["npm:18.1.3", {
-          "packageLocation": "./.yarn/cache/yargs-parser-npm-18.1.3-0ba9c4f088-3387172167.zip/node_modules/yargs-parser/",
-          "packageDependencies": [
-            ["yargs-parser", "npm:18.1.3"],
-            ["camelcase", "npm:5.3.1"],
-            ["decamelize", "npm:1.2.0"]
-          ],
-          "linkType": "HARD",
-        }],
         ["npm:19.0.1", {
           "packageLocation": "./.yarn/cache/yargs-parser-npm-19.0.1-81ba6bf779-e2a326f5f3.zip/node_modules/yargs-parser/",
           "packageDependencies": [

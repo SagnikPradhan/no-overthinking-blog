@@ -1,15 +1,17 @@
-import { createSchema, Type, typedModel } from "ts-mongoose";
+import { createSchema, ExtractDoc, Type, typedModel } from "ts-mongoose";
 
-import { EditorSchema } from "./editor";
+import { UserSchema } from "./user";
 
 export const PostSchema = createSchema(
   {
     title: Type.string({ required: true, unique: true }),
     content: Type.object({ required: true }).of({}),
-    author: Type.ref({ schema: EditorSchema }),
+    author: Type.ref({ schema: UserSchema }),
   },
   { timestamps: true }
 );
 
-export const PostModel = typedModel("posts", PostSchema);
-export default PostModel;
+export const Post = typedModel("posts", PostSchema);
+export default Post;
+
+export type PostType = ExtractDoc<typeof PostSchema>;
