@@ -13,12 +13,14 @@
   },
   "dependencies": {
     "@koa/router": "^9.4.0",
+    "dotenv": "^8.2.0",
     "joi": "^17.2.1",
     "koa": "^2.13.0",
     "koa-bodyparser": "^4.3.0",
     "koa-session": "^6.0.0",
     "mongoose": "^5.10.0",
     "node-fetch": "^2.6.0",
+    "source-map-support": "^0.5.19",
     "ts-mongoose": "^0.0.21"
   }
 }

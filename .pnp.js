@@ -1313,6 +1313,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["dotenv", [
+        ["npm:8.2.0", {
+          "packageLocation": "./.yarn/cache/dotenv-npm-8.2.0-6b21df4d37-16cb89cbd7.zip/node_modules/dotenv/",
+          "packageDependencies": [
+            ["dotenv", "npm:8.2.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["ecc-jsbn", [
         ["npm:0.1.2", {
           "packageLocation": "./.yarn/cache/ecc-jsbn-npm-0.1.2-85b7a7be89-5b4dd05f24.zip/node_modules/ecc-jsbn/",
@@ -3004,12 +3013,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/mongoose", "npm:5.7.36"],
             ["@types/node", "npm:14.6.0"],
             ["@types/node-fetch", "npm:2.5.7"],
+            ["dotenv", "npm:8.2.0"],
             ["joi", "npm:17.2.1"],
             ["koa", "npm:2.13.0"],
             ["koa-bodyparser", "npm:4.3.0"],
             ["koa-session", "npm:6.0.0"],
             ["mongoose", "npm:5.10.0"],
             ["node-fetch", "npm:2.6.0"],
+            ["source-map-support", "npm:0.5.19"],
             ["ts-mongoose", "virtual:2499dbb93d824027565d71b0716c4fb8b548ad61955d0a0286bfb3c5b4058e227894b6691d96808c00f576db14870018375210362c26ee321ea99fd6ed041c74#npm:0.0.21"],
             ["typescript", "patch:typescript@npm%3A4.0.2#builtin<compat/typescript>::version=4.0.2&hash=5b02a2"]
           ],

@@ -6,25 +6,22 @@ import { URLSearchParams } from "url";
 
 import { config } from "../utils/config";
 import { AppError } from "../utils/error";
-import User from "../models/user";
+import { User, UserProps, UserType } from "../models/user";
 
 export const router = new Router({ prefix: "/oauth/discord" });
 
 router.get("/", async (ctx) => {
   const { discord } = await config();
-  const { clientId, clientSecret, redirectUri, guildId } = discord;
-  const scope = "identify email guilds";
+  const { clientId, clientSecret, redirectUri } = discord;
+  const scope = "identify email";
 
   if (ctx.query.code)
     return loginUser(ctx, {
-      discordAccessTokenGenOptions: {
-        clientId,
-        clientSecret,
-        code: ctx.query.code,
-        redirectUri,
-        scope,
-      },
-      guildId,
+      clientId,
+      clientSecret,
+      code: ctx.query.code,
+      redirectUri,
+      scope,
     });
   else
     return redirectUser(ctx, {
@@ -37,66 +34,46 @@ router.get("/", async (ctx) => {
 /**
  * Login user when redirected by discord oauth page
  * @param ctx - Router Context
+ * @param discordAccessTokenGenOptions - Options
  */
 async function loginUser(
   ctx: ParameterizedContext,
-  {
-    guildId,
-    discordAccessTokenGenOptions,
-  }: {
-    guildId: string;
-    discordAccessTokenGenOptions: DiscordAccessTokenGenOptions;
-  }
+  discordAccessTokenGenOptions: DiscordAccessTokenGenOptions
 ) {
+  // Get user details from discord
   const token = await generateDiscordAccessToken(discordAccessTokenGenOptions);
-  const request = await discordClientRequestFactory(token);
+  const { id, username, email, avatar } = await getUserInfo<{
+    id: string;
+    username: string;
+    email: string;
+    avatar: string;
+  }>(token, ["id", "username", "email", "avatar"]);
 
-  const userProps = [
-    "id",
-    "username",
-    "email",
-    "avatar",
-    "discriminator",
-  ] as const;
-
-  const { id, username, email, avatar } = await request<
-    Record<typeof userProps[number], string>
-  >(
-    "/users/@me",
-    (data) =>
-      typeof data === "object" &&
-      data !== null &&
-      userProps.every((key) => key in data)
-  );
-
+  // Find user
   const databaseUser = await User.findById(id);
 
-  if (databaseUser === null) {
-    const discordCurrentUserGuilds = await request<{ id: string }[]>(
-      "/users/@me/guilds",
-      (data) =>
-        typeof data === "object" && data !== null && data.hasOwnProperty("id")
-    );
-    const isEditor = discordCurrentUserGuilds.some((g) => g.id === guildId);
+  // If user not found return
+  if (databaseUser === null) return;
 
-    if (isEditor)
-      await User.create({
-        _id: id,
-        username,
-        email,
-        avatarUrl: `https://cdn.discordapp.com/avatars/${id}/${avatar}.webp`,
-        role: "editor",
-        createdAt: Date.now(),
-        updatedAt: Date.now(),
-      });
-  } else ctx.session.userId = id;
+  // Add session
+  ctx.session.userId = id;
 
+  // Update user
+  Object.assign<UserType, Partial<UserProps>>(databaseUser, {
+    username,
+    email,
+    avatar,
+  });
+  await databaseUser.save();
+
+  // Redirect user
   return ctx.redirect("/");
 }
 
 /**
  * Redirect user to discord oauth page
  * @param ctx - Router Context
+ * @param options - Options
  */
 async function redirectUser(
   ctx: ParameterizedContext,
@@ -167,36 +144,39 @@ async function generateDiscordAccessToken({
 }
 
 /**
- * Generates a function to request to API as user
+ * Get user information from discord
  * @param token - Access Token
+ * @param userProps - Requested props
  */
-function discordClientRequestFactory(token: string) {
-  return async function discordAPIRequest<T>(
-    endpoint: string,
-    validator: (data: unknown) => boolean
-  ): Promise<T> {
-    const BASE = "https://discord.com/api/v7";
+async function getUserInfo<T extends unknown>(
+  token: string,
+  userProps: string[]
+) {
+  const req = await fetch("https://discord.com/api/v7/user/@me", {
+    headers: {
+      Authorization: `Bearer ${token}`,
+      Accept: "application/json",
+      "User-Agent": "NOB-Client (no-url, 0.0.1)",
+    },
+  });
 
-    const req = await fetch(BASE + endpoint, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-        Accept: "application/json",
-        "User-Agent": "NOB-Client (no-url, 0.0.1)",
-      },
+  if (!req.ok)
+    throw new AppError("Invalid Status Recieved", {
+      isOperational: true,
+      request: req,
     });
 
-    if (!req.ok)
-      throw new AppError("Invalid Status Recieved", {
-        isOperational: true,
-        request: req,
-      });
+  const res: unknown = await req.json();
 
-    const res: unknown = await req.json();
-    if (validator(res)) return res as T;
-    else
-      throw new AppError("Invalid Body Recieved", {
-        isOperational: true,
-        response: res,
-      });
-  };
+  if (
+    typeof res === "object" &&
+    res !== null &&
+    userProps.every((key) => key in res)
+  )
+    return res as T;
+  else
+    throw new AppError("Invalid Body Recieved", {
+      isOperational: true,
+      response: res,
+    });
 }

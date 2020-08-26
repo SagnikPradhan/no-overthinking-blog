@@ -4,9 +4,10 @@ import BodyParser from "koa-bodyparser";
 
 import { config } from "./utils/config";
 import { initDatabase } from "./utils/database";
+import { router as discordOAuthRouter } from "./routers/oauth.discord";
 
 export const initApp = async () => {
-  await config()
+  await config();
 
   const App = new Koa();
 
@@ -14,6 +15,8 @@ export const initApp = async () => {
   App.use(BodyParser());
 
   await initDatabase();
+
+  App.use(discordOAuthRouter.routes());
 
   return App;
 };

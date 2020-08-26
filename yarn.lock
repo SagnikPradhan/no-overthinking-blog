@@ -1068,6 +1068,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"dotenv@npm:^8.2.0":
+  version: 8.2.0
+  resolution: "dotenv@npm:8.2.0"
+  checksum: 16cb89cbd7b98b053899b8aba8c5044c8fb61a2db8a81fe70360b75035fce5fed53bd7a34d772be717d0880c0321122a4c09423f518025e1b52d96791521b1a7
+  languageName: node
+  linkType: hard
+
 "ecc-jsbn@npm:~0.1.1":
   version: 0.1.2
   resolution: "ecc-jsbn@npm:0.1.2"
@@ -2568,12 +2575,14 @@ fsevents@~2.1.2:
     "@types/mongoose": ^5.7.36
     "@types/node": ^14.6.0
     "@types/node-fetch": ^2.5.7
+    dotenv: ^8.2.0
     joi: ^17.2.1
     koa: ^2.13.0
     koa-bodyparser: ^4.3.0
     koa-session: ^6.0.0
     mongoose: ^5.10.0
     node-fetch: ^2.6.0
+    source-map-support: ^0.5.19
     ts-mongoose: ^0.0.21
     typescript: ^4.0.2
   languageName: unknown
@@ -2621,7 +2630,7 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
-"source-map-support@npm:~0.5.12":
+"source-map-support@npm:^0.5.19, source-map-support@npm:~0.5.12":
   version: 0.5.19
   resolution: "source-map-support@npm:0.5.19"
   dependencies:

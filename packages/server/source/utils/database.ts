@@ -8,5 +8,6 @@ export const initDatabase = async () => {
   return Mongoose.connect(database.connectionUri, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
+    useCreateIndex: true
   });
 };

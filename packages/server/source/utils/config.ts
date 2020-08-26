@@ -1,7 +1,5 @@
+import "dotenv/config";
 import Joi from "joi";
-
-import fs from "fs";
-import { resolve } from "path";
 
 import { AppError } from "./error";
 
@@ -12,7 +10,6 @@ export interface Config {
     clientId: string;
     clientSecret: string;
     redirectUri: string;
-    guildId: string;
   };
 }
 
@@ -26,51 +23,44 @@ let cachedConfig: Config | null = null;
 export async function config(): Promise<Config> {
   if (cachedConfig) return cachedConfig;
 
+  const { string } = Joi.types();
   const configSchema = Joi.object<Config>({
     web: Joi.object({
-      port: Joi.string()
-        .length(4)
-        .default(process.env.PORT)
-        .description("The port server should listen to."),
-
-      key: Joi.string()
-        .token()
-        .default(process.env.WEB_KEY)
-        .description("The keys used for session."),
+      port: string.length(4).description("The port server should listen to."),
+      key: string.token().description("The keys used for session."),
     }),
 
     database: Joi.object({
-      connectionUri: Joi.string()
-        .uri({ scheme: "mongodb" })
-        .default(process.env.DB_URI)
-        .description("The database connection uri."),
+      connectionUri: string.description("The database connection uri."),
     }),
 
     discord: Joi.object({
-      clientId: Joi.string()
-        .default(process.env.DISCORD_CLIENT_ID)
-        .description("The discord client's id."),
-
-      clientSecret: Joi.string()
-        .default(process.env.DISCORD_CLIENT_SECRET)
-        .description("The discord client's secret."),
-
-      redirectUri: Joi.string()
+      clientId: string.description("The discord client's id."),
+      clientSecret: string.description("The discord client's secret."),
+      redirectUri: string
         .uri()
-        .default(process.env.DISCORD_REDIRECT_URI)
         .description("The redirect uri used with discord oauth."),
-
-      guildId: Joi.string()
-        .default(process.env.DISCORD_GUILD_ID)
-        .description("The guild id for editors."),
     }),
   });
 
-  const configFilePath = resolve(process.cwd(), "config.json");
-  const configFileExists = fs.existsSync(configFilePath);
-  const config: Partial<Config> = configFileExists
-    ? await import(configFilePath)
-    : {};
+  const env = process.env;
+  const config: Config = {
+    web: {
+      port: env.PORT || "8080",
+      key: env.WEB__KEY || "a56a4g6ag445hrhha6rh5a5eaaslapskeyboard",
+    },
+
+    database: {
+      connectionUri: env.DB__URI as string,
+    },
+
+    discord: {
+      clientId: env.DISCORD__CLIENT__ID as string,
+      clientSecret: env.DISCORD__CLIENT__SECRET as string,
+      redirectUri:
+        env.DISCORD__REDIRECT__URI || "http://localhost:8080/oauth/discord",
+    },
+  };
 
   const { error, value } = configSchema.validate(config, {
     presence: "required",
