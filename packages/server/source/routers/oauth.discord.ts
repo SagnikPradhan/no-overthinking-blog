@@ -42,12 +42,7 @@ async function loginUser(
 ) {
   // Get user details from discord
   const token = await generateDiscordAccessToken(discordAccessTokenGenOptions);
-  const { id, username, email, avatar } = await getUserInfo<{
-    id: string;
-    username: string;
-    email: string;
-    avatar: string;
-  }>(token, ["id", "username", "email", "avatar"]);
+  const { id, username, email, avatar } = await getUserInfo(token);
 
   // Find user
   const databaseUser = await User.findById(id);
@@ -146,12 +141,8 @@ async function generateDiscordAccessToken({
 /**
  * Get user information from discord
  * @param token - Access Token
- * @param userProps - Requested props
  */
-async function getUserInfo<T extends unknown>(
-  token: string,
-  userProps: string[]
-) {
+async function getUserInfo(token: string) {
   const req = await fetch("https://discord.com/api/v7/user/@me", {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -166,14 +157,15 @@ async function getUserInfo<T extends unknown>(
       request: req,
     });
 
-  const res: unknown = await req.json();
+  const res: Record<string, unknown> = await req.json();
+  const userProps = ["id", "username", "email", "avatar"] as const;
 
   if (
     typeof res === "object" &&
     res !== null &&
-    userProps.every((key) => key in res)
+    userProps.every((key) => typeof res[key] === "string")
   )
-    return res as T;
+    return res as Record<typeof userProps[number], string>;
   else
     throw new AppError("Invalid Body Recieved", {
       isOperational: true,
