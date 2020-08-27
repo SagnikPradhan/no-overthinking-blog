@@ -7,8 +7,9 @@ import { URLSearchParams } from "url";
 import { config } from "../utils/config";
 import { AppError } from "../utils/error";
 import { User, UserProps, UserType } from "../models/user";
+import { AppContext } from "../app";
 
-export const router = new Router({ prefix: "/oauth/discord" });
+export const router = new Router<{}, AppContext>({ prefix: "/oauth/discord" });
 
 router.get("/", async (ctx) => {
   const { discord } = await config();
@@ -37,7 +38,10 @@ router.get("/", async (ctx) => {
  * @param discordAccessTokenGenOptions - Options
  */
 async function loginUser(
-  ctx: ParameterizedContext,
+  ctx: ParameterizedContext<
+    {},
+    AppContext & Router.RouterParamContext<{}, AppContext>
+  >,
   discordAccessTokenGenOptions: DiscordAccessTokenGenOptions
 ) {
   // Get user details from discord
@@ -51,7 +55,12 @@ async function loginUser(
   if (databaseUser === null) return;
 
   // Add session
-  ctx.session.userId = id;
+  if (ctx.session)
+    ctx.session.user = {
+      id,
+      isAdmin: databaseUser.role === "admin",
+    };
+  else throw new AppError("No session found", { isOperational: false, ctx });
 
   // Update user
   Object.assign<UserType, Partial<UserProps>>(databaseUser, {
