@@ -86,7 +86,7 @@ async function redirectUser(
     prompt: "none",
   });
 
-  const url = `https://discord.com/api/oauth2/authorize?=${query}`;
+  const url = `https://discord.com/api/oauth2/authorize?${query}`;
   return ctx.redirect(url);
 }
 
@@ -122,10 +122,12 @@ async function generateDiscordAccessToken({
     method: "POST",
     body: data,
   });
+
   if (!request.ok)
     throw new AppError("Recieved Invalid Status", {
       isOperational: true,
-      request,
+      url: request.url,
+      statusCode: request.status,
     });
 
   const response: Record<string, string> = await request.json();
@@ -143,7 +145,7 @@ async function generateDiscordAccessToken({
  * @param token - Access Token
  */
 async function getUserInfo(token: string) {
-  const req = await fetch("https://discord.com/api/v7/user/@me", {
+  const req = await fetch("https://discord.com/api/v7/users/@me", {
     headers: {
       Authorization: `Bearer ${token}`,
       Accept: "application/json",
@@ -154,7 +156,8 @@ async function getUserInfo(token: string) {
   if (!req.ok)
     throw new AppError("Invalid Status Recieved", {
       isOperational: true,
-      request: req,
+      url: req.url,
+      statusCode: req.status,
     });
 
   const res: Record<string, unknown> = await req.json();

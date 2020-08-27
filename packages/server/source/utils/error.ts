@@ -1,3 +1,5 @@
+import "source-map-support/register";
+
 interface ErrorContext {
   isOperational: boolean;
   [key: string]: unknown;

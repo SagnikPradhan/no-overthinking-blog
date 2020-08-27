@@ -9,6 +9,7 @@
     "outDir": "dist",
     "rootDir": "source",
     "tsBuildInfoFile": "dist/.tsbuildinfo",
+    "sourceMap": true,
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
